@@ -6,7 +6,7 @@ networks:
 
 volumes:
   main1-vol:
-  # main2-vol:
+  main2-vol:
   
 services:
   main:
