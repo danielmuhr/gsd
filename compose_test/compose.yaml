@@ -1,3 +1,12 @@
+
+networks:
+  main1-net:
+  main1-net:
+
+volumes:
+  main1-vol:
+  main2-vol:
+  
 services:
   main:
     image: danielmuhr/gsd:main1
