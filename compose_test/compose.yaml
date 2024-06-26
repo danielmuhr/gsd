@@ -1,32 +1,43 @@
+# Un-comment the 'version' field if you get an 'unsupported Compose file version: 1.0' ERROR
+version: '0.1'
 
 networks:
-  main1-net:
   main1-net:
 
 volumes:
   main1-vol:
-  main2-vol:
+  # main2-vol:
   
 services:
   main:
     image: danielmuhr/gsd:main1
-    build:
-      context: .
-      dockerfile: /main1/Dockerfile
+    # build:
+    #   context: .
+    #   dockerfile: /main1/Dockerfile
     deploy:
-      replicas: 10
+      replicas: 4
+    # ports:
+    #   - target: 8080
+    #     published: 5001
+    networks:
+      - main1-net
     volumes:
       - type: volume
         source: main1-vol
         target: /app
-  main2:
-    image: danielmuhr/gsd:main2
-    build:
-      context: .
-      dockerfile: /main2/Dockerfile2
-    deploy:
-      replicas: 5
-    volumes:
-      - type: volume
-        source: main2-vol
-        target: /app
+  # main2:
+  #   image: danielmuhr/gsd:main2
+  #   # build:
+  #   #   context: .
+  #   #   dockerfile: /main2/Dockerfile2
+  #   deploy:
+  #     replicas: 5
+  #   # ports:
+  #   #   - target: 8081
+  #   #     published: 5002
+  #   networks:
+  #     - main1-net
+  #   volumes:
+  #     - type: volume
+  #       source: main2-vol
+  #       target: /app

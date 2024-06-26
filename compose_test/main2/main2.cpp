@@ -3,7 +3,11 @@
 
 int main (int argc, char* argv[]) {
 
-    std::cout << "Hello world again!" << std::endl;
+    std::cout << "Main2: Hello world again!" << std::endl;
+
+    while(true){
+
+    }
 
     return 0;
 }
