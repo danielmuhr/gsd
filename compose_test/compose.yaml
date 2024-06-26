@@ -1,0 +1,23 @@
+services:
+  main:
+    image: danielmuhr/gsd:main1
+    build:
+      context: .
+      dockerfile: /main1/Dockerfile
+    deploy:
+      replicas: 10
+    volumes:
+      - type: volume
+        source: main1-vol
+        target: /app
+  main2:
+    image: danielmuhr/gsd:main2
+    build:
+      context: .
+      dockerfile: /main2/Dockerfile2
+    deploy:
+      replicas: 5
+    volumes:
+      - type: volume
+        source: main2-vol
+        target: /app

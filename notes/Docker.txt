@@ -1,3 +1,7 @@
+Docker
+
+----------------
+Docker file:
 FROM node:current-alpine
 
 LABEL org.opencontainers.image.title="gsd" \
@@ -13,3 +17,12 @@ WORKDIR /code/gsd/app
 RUN apk add --no-cache g++ && /usr/bin/g++ server_linux.cpp -o server_linux.o
 
 CMD ["./server_linux.o"]
+----------------
+
+docker image build -t danielmuhr/gsd:ctr2024 .
+docker image push danielmuhr/gsd:2024
+
+docker image ls
+docker container run --name web -p 8000:8080 danielmuhr/gsd:ctr2024
+docker container stop web
+docker container rm web
