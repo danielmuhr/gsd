@@ -1,5 +1,5 @@
 # Un-comment the 'version' field if you get an 'unsupported Compose file version: 1.0' ERROR
-version: '0.1'
+# version: '0.1'
 
 networks:
   main1-net:
