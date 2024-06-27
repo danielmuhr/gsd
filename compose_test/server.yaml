@@ -1,0 +1,27 @@
+# Un-comment the 'version' field if you get an 'unsupported Compose file version: 1.0' ERROR
+# version: '0.1'
+
+networks:
+  server-net:
+
+volumes:
+  server-vol:
+
+services:
+  server:
+    image: danielmuhr/gsd:server
+    command: apk add --no-cache g++ && /usr/bin/g++ server/server.cpp -o server.out && cd server && ./server.out
+
+    deploy:
+      replicas: 4
+
+    ports:
+      - target: 8080
+        published: 5001
+
+    networks:
+      - server-net
+    volumes:
+      - type: volume
+        source: server-vol
+        target: /app
