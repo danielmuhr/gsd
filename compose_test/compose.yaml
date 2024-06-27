@@ -11,14 +11,17 @@ volumes:
 services:
   main:
     image: danielmuhr/gsd:main1
+    command: apk add --no-cache g++ && /usr/bin/g++ main1/main1.cpp -o main1.out
     # build:
     #   context: .
     #   dockerfile: /main1/Dockerfile
     deploy:
       replicas: 4
+
     # ports:
     #   - target: 8080
     #     published: 5001
+    
     networks:
       - main1-net
     volumes:
@@ -27,6 +30,8 @@ services:
         target: /app
   main2:
     image: danielmuhr/gsd:main2
+    command: apk add --no-cache g++ && /usr/bin/g++ main2/main2.cpp -o main2.out
+
   #   # build:
   #   #   context: .
   #   #   dockerfile: /main2/Dockerfile2
